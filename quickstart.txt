@@ -1,0 +1,37 @@
+Templating is so easy with Bundle!
+
+First, let's create our templates. The template directory in Bundle is by default the "views" folder.
+Unless you write a configuration, there is no way to change that at this time, so let's create that folder.
+All of your templates, should end with the extension ".view.bundle", because that is what Bundle will look for.
+Create the file, in the views directory, "index.view.bundle", so that we can render it. Notice, that 
+in any ".view.bundle" file, we can write any HTML code, and we can also link to the values we set, but
+we will get to that in a second. Next, in the file that you want the user to access, in your root directory 
+(I am making this "index.php"), we need to create a Bundle instance for our template. At the top of your file,
+we need to use the Bundle class, write this code:
+
+              <?php
+              use \Bundle\Framework\Bundle;
+              ?>
+              
+Now, we need to create Bundle object so that we can render our template. You can do this by writing the following
+code:
+              <?php
+              use \Bundle\Framework\Bundle;
+              
+              $index = new Bundle('index');
+              ?>
+              
+Let's look at what this means, first, the name of our variable is "index". I named the variable this because this
+object is going to be used only for our index template. In the Bundle constructor, I passed the string "index", because
+that is what I named my template file ("index.view.bundle"). Keep in mind, you DO NOT need to write the file extension
+(".view.bundle"), when you initialize the object. However, if you choose to add further extensions, they MUST be BEFORE 
+the ".view.bundle" and you MUST include them in the file name when you initialize the object. 
+
+Now, let's render our template. This is extremely freaking easy, all you have to do is write the following code:
+
+              <?php
+              use \Bundle\Framework\Bundle;
+              
+              $index = new Bundle('index');
+              $index->render();
+              ?>
